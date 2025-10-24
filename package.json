@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix frontend\" \"npm run start:dev --prefix backend\" \"npx prisma studio --schema backend/prisma/schema.prisma\" \"docker compose up -d\" "
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prisma": "^6.17.1"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.17.1"
+  }
+}
