@@ -9,6 +9,7 @@ export default async function Home() {
 
   const flags = await flagsmith.getEnvironmentFlags();
 
+  const showFooter = flags.isFeatureEnabled('show_footer') ?? false;
   const showUsers = flags.isFeatureEnabled('show_users') ?? false;
 
   // Nur fetchen, wenn Feature aktiv ist
@@ -65,7 +66,8 @@ export default async function Home() {
           </a>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
+      {showFooter ? (
+             <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -93,7 +95,7 @@ export default async function Home() {
           <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
           Go to nextjs.org →
         </a>
-      </footer>
+      </footer>) : null}
     </div>
   );
 }
